@@ -13,4 +13,5 @@ fetch(`http://api.weatherstack.com/current?access_key=${parameters.access_key}&q
     .catch(error => {
         console.error('Erreur, veiller réessayer:', error);
     });
+
     
