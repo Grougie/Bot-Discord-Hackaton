@@ -1,13 +1,19 @@
-const { Client, GatewayIntentBits } = require("discord.js");
+const Discord = require ("discord.js")
+const bot = new Discord.Client({intents: 3276799})
+const config = require("./module")
 
-const client = new Client ({
-    intents: [ 
-        GatewayIntentBits.Guilds
-    ]
-});
+bot.login(config.token)
 
-client.on("ready", () => {
-    console.log("BotOperationnal")
-});
+bot.on("ready", async () => {
 
-client.login("MTIwMzk3ODE1NDMyMzA4NzM2MA.GGtda-.bWZBM5UW_mBUm2KtEol8b4nta8woeUgIqAacas");
+    console.log(`${bot.user.tag} est en ligne !`)
+
+})
+
+
+
+
+
+
+
+
