@@ -1,6 +1,6 @@
 const parameters = {
     access_key:"c7b7d852d39e5b713bfe1ee2ce46262d",
-    query: "Nantes, France",
+    query: "Nice, France",
     units: "m"
 }
 
@@ -14,4 +14,3 @@ fetch(`http://api.weatherstack.com/current?access_key=${parameters.access_key}&q
         console.error('Erreur, veiller réessayer:', error);
     });
 
-    
