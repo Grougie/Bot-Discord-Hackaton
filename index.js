@@ -6,5 +6,8 @@ const parameters = {
 
 fetch(`http://api.weatherstack.com/current?access_key=${parameters.access_key}&query=${parameters.query}&units=${parameters.units}`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        const { current, location, request} = data;
+        console.log(`La température à ${location.name} est de ${current.temperature}°C`);
+    })
     
