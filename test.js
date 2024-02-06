@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const fetch = require("node-fetch");
+
 
 const parameters = {
     access_key: "c7b7d852d39e5b713bfe1ee2ce46262d",
@@ -16,9 +16,10 @@ module.exports = {
             const data = await response.json();
 
             const { current, location } = data;
-            console.log(`La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`);
+            const messageContent = `La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`;
 
-            // Utilisez 'message.channel.send' pour envoyer un message sur Discord si nécessaire
+            console.log(messageContent); 
+            message.channel.send(messageContent); 
         } catch (error) {
             console.error('Erreur, veuillez réessayer :', error);
         }
