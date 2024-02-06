@@ -1,4 +1,5 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+
 const parameters = {
     access_key:"c7b7d852d39e5b713bfe1ee2ce46262d",
     query: "Nantes, France",
@@ -8,16 +9,19 @@ const parameters = {
 module.exports = {
 
     name: "meteo",
+    async run(bot, message) {
+        try {
+            const response = await fetch(`http://api.weatherstack.com/current?access_key=${parameters.access_key}&query=${parameters.query}&units=${parameters.units}`);
+            const data = await response.json();
 
-    async run (bot, message) {
-    fetch(`http://api.weatherstack.com/current?access_key=${parameters.access_key}&query=${parameters.query}&units=${parameters.units}`)
-    .then(response => response.json())
-    .then(data => {
-        const { current, location, request} = data;
-        console.log(`La température à ${location.name} est de ${current.temperature}°C, le un ressenti est de ${current.feelslike}°C.`);
-    })
-    .catch(error => {
-        console.error('Erreur, veiller réessayer:', error);
-    });
+            const { current, location } = data;
+            const messageContent = `La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`;
+            await message.reply(`La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`)
+
+            console.log(messageContent); // Affiche dans la console
+            message.channel.send(messageContent); // Envoie sur Discord
+        } catch (error) {
+            console.error('Erreur, veuillez réessayer :', error);
+        }
     }
 }
