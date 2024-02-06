@@ -17,7 +17,7 @@ module.exports = {
 
             const { current, location } = data;
             const messageContent = `La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`;
-
+        
             console.log(messageContent); 
             message.channel.send(messageContent); 
         } catch (error) {
