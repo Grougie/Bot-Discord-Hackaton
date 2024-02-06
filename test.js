@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
-
+const fetch = require("node-fetch");
+const cron = require("node-cron")
 
 const parameters = {
     access_key: "c7b7d852d39e5b713bfe1ee2ce46262d",
@@ -17,7 +18,7 @@ module.exports = {
 
             const { current, location } = data;
             const messageContent = `La température à ${location.name} est de ${current.temperature}°C, le ressenti est de ${current.feelslike}°C.`;
-        
+
             console.log(messageContent); 
             message.channel.send(messageContent); 
         } catch (error) {
@@ -25,3 +26,8 @@ module.exports = {
         }
     }
 }
+
+cron.schedule("0 7 * * *", () => {
+    module.exports.run(bot, message);
+})
+
