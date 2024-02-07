@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { myExternalFunction } = require('../../myExternalFunction.js');
+const { getPlanning } = require('../../import_ical.js');
+const { addOneHour } = require('../../addOneHour.js');
+const { replaceBR } = require('../../replaceText.js');
 
 
 module.exports = {
@@ -7,9 +9,10 @@ module.exports = {
         .setName('planning')
         .setDescription('Provides information about the planning.'),
     async execute(interaction) {
-        // Appelez la fonction externe ici
-        myExternalFunction();
-    
-        await interaction.reply('This command is not yet implemented.');
-    },
+        text = getPlanning();
+		let planning = text.replace(/\d{2}:\d{2}:\d{2}Z/g, match => addOneHour(match));
+        planning = replaceBR(planning);
+        const currentDate = new Date();
+        const formatedDate = currentDate.toISOString().split('T')[0];
+        await interaction.reply("👋 Bonjour ! Voici le planning de la journée du : " + formatedDate + " 📅\n\n" + planning +"Bonne journée à vous ! 😊");    },
 };
