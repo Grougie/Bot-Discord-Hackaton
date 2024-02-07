@@ -17,7 +17,7 @@ function getPlanning() {
         if (vevents[i][1][4] !== undefined) {
             if (vevents[i][1][4][0] == "dtstart") {
                 if (vevents[i][1][4][3].split('T')[0] === formatedDate) {
-                    resultEvent += vevents[i][1][8][3] + vevents[i][1][4][3].split('T')[1]+ "\n" + "\n";
+                    resultEvent += vevents[i][1][8][3] + vevents[i][1][4][3].split('T')[1]+ "-" + vevents[i][1][5][3].split('T')[1] + "\n" + "\n";
                 }
             }
         }
