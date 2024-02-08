@@ -21,8 +21,6 @@ bot.on("messageCreate", async message => {
     if (message.content === "!meteo") return bot.commands.get("meteo").run(bot,message)
 })
 
-
-
 let coubehCount = 0;
 let feurCount = 0;
 
