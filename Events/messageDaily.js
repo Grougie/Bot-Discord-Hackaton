@@ -8,10 +8,10 @@ module.exports = async (bot,message) => {
 
     bot.login(config.token)
 
-    cron.schedule('34 18 * * *', async () => {
+    cron.schedule('32 08 * * *', async () => {
         try {
             const messageContent = await meteo.run(meteo);
-            channel.send(messageContent);
+            message.channel.send(messageContent);
         } catch (error) {
             console.error('Erreur lors de l\'exécution de la fonction météo :', error);
         }
