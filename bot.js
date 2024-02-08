@@ -37,24 +37,6 @@ bot.on("messageCreate", async message => {
     }
 });
 
-bot.on("messageCreate", async message => {
-    const regex = /\baurelien\b(?![^\s,.!?])/gi;
-    if(regex.test(message.content)) {
-    message.channel.send("sale juif")
-    }
-});
-
-bot.on("messageCreate", async message => {
-    if(message.content === "stan")
-    message.channel.send("est un gros sac")
-})
-
-
-bot.on("messageCreate", async message => {
-    if(message.content === "@Justsultry")
-    message.channel.send("est un gros arabe")
-})
-
 bot.on("guildMemberAdd", function (member){
     member.createDM().then(function (channel){
         return channel.send("Bienvenue sur le channel connard de" + member.displayName)
