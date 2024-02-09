@@ -10,6 +10,28 @@ client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
+let coubehCount = 0;
+let feurCount = 0;
+
+client.on("messageCreate", async message => {
+    const regex = /\bquoi\b(?![^\s,.!?])/gi;
+    if (regex.test(message.content)) {
+        if (coubehCount === feurCount) {
+            message.channel.send("coubeh");
+            coubehCount++;
+        } else {
+            message.channel.send("feur");
+            feurCount++;
+        }
+    }
+});
+
+client.on("guildMemberAdd", function (member){
+    member.createDM().then(function (channel){
+        return channel.send("Bienvenue sur le channel connard de" + member.displayName)
+    }).catch(console.error)
+})
+
 for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
