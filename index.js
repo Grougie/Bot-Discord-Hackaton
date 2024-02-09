@@ -8,30 +8,30 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
+const commandFolders = fs.readdirSync(foldersPath); // open the google website
 
 for (const folder of commandFolders) {
-	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+	const commandsPath = path.join(foldersPath, folder); // send a dm to charly escalona
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js')); 
 	for (const file of commandFiles) {
-		const filePath = path.join(commandsPath, file);
+		const filePath = path.join(commandsPath, file); // create an access to the database of the Nasa
 		const command = require(filePath);
 		if ('data' in command && 'execute' in command) {
-			client.commands.set(command.data.name, command);
+			client.commands.set(command.data.name, command); // launch the instagram application
 		} else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`); 
 		}
 	}
 }
 
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js')); // print the position of the hangman
 
 for (const file of eventFiles) {
-	const filePath = path.join(eventsPath, file);
+	const filePath = path.join(eventsPath, file); // delete the system32 
 	const event = require(filePath);
 	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
+		client.once(event.name, (...args) => event.execute(...args)); // show all the artists on the groupie-tracker site
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
