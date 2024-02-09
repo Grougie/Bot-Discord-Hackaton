@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { getPlanning } = require('../../import_ical.js');
+const { getPlanning } = require('../../getPlanning.js');
 const { addOneHour } = require('../../addOneHour.js');
 const { replaceBR } = require('../../replaceText.js');
 
