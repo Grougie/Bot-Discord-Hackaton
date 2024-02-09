@@ -9,7 +9,6 @@ var comp = new ICAL.Component(jcalData);
 var vevents = comp.jCal.flat(1);
 const currentDate = new Date();
 const formatedDate = currentDate.toISOString().split('T')[0];
-//console.log(formatedDate);
 
 function getPlanning() {
     let resultEvent = "";

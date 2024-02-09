@@ -10,15 +10,20 @@ module.exports = {
 	execute(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 
+		// Holen Sie sich die Gilde und den Kanal
+
 		const guild = client.guilds.cache.get('1203977555112370186'); 
         const channel = guild.channels.cache.get('1203977555112370191'); 
 
 		cron.schedule('0 7 * * *', async ()  => {
+			// 0 7 * * * = 7h00
 			const text = getPlanning();
 			let planning = text.replace(/\d{2}:\d{2}:\d{2}Z/g, match => addOneHour(match));
 			const currentDate = new Date();
 			const formatedDate = currentDate.toISOString().split('T')[0];
 			const meteo = await getWeather();
+
+			// Senden Sie eine Nachricht an den Kanal
 
 			const  message = '🌞 @everyone Bonjour tout le monde! Voici votre planning de la journée et la météo:\n\n' +"📅 Le planning de la journée du : " + formatedDate + " est le suivant:\n\n" + planning + "\n" +"🌤️ Voici la météo du jour:\n\n" + meteo + "\n\n" + "\n" +"😊 Passez une bonne journée à tous!"; 
 

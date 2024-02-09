@@ -4,6 +4,7 @@ function addOneHour(time) {
     if (isNaN(date.getTime())) {
         throw new Error(`Invalid time string: ${time}`);
     }
+    // 
     date.setHours(date.getHours() + 1);
     let newTime = date.toISOString().split('T')[1].split(':').slice(0, 2).join(':');
     return newTime;
