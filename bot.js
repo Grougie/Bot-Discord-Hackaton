@@ -14,11 +14,11 @@ loadEvents(bot)
 Events(bot)
 
 bot.on("messageCreate", async message => {
-    if (message.content === "!ping") return bot.commands.get("ping").run(bot,message)
+    if (message.content === "!ping") return bot.commands.get("ping").run(bot,message) // permet de récupérer la commande ping
 })
 
 bot.on("messageCreate", async message => {
-    if (message.content === "!meteo") return bot.commands.get("meteo").run(bot,message)
+    if (message.content === "!meteo") return bot.commands.get("meteo").run(bot,message) // permet de récupérer la commande meteo
 })
 
 let coubehCount = 0;
